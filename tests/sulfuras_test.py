@@ -33,7 +33,7 @@ def test_sulfuras_quality_is_never_negative_past_sell_in():
     assert item.quality == 0
 
 
-@pytest.mark.xfail(characterization_mode, reason = "bug in original")
+@pytest.mark.xfail(xfail_bug_in_original, reason = "bug in original")
 def test_sulfuras_quality_is_never_negative_starting_negative_fails():
     item = Item("Sulfuras, Hand of Ragnaros", 10, -5)
     GildedRose([item]).update_quality()
@@ -53,7 +53,7 @@ def test_sulfuras_quality_is_never_over_50_from_50():
     assert item.sell_in == 6
     assert item.quality == 50
 
-@pytest.mark.xfail(characterization_mode, reason = "bug in original")
+@pytest.mark.xfail(xfail_bug_in_original, reason = "bug in original")
 def test_sulfuras_quality_is_never_over_50_starting_over_50_bug():
     item = Item("Sulfuras, Hand of Ragnaros", 0, 100)
     GildedRose([item]).update_quality()

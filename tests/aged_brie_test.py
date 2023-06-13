@@ -38,14 +38,14 @@ def test_aged_brie_quality_is_never_negative_past_sell_in():
     assert item.sell_in == -1
     assert item.quality == 2
 
-@pytest.mark.xfail(characterization_mode, reason = "bug in original")
+@pytest.mark.xfail(xfail_bug_in_original, reason = "bug in original")
 def test_aged_brie_quality_is_never_negative_starting_negative_bug():
     item = Item("Aged Brie", 10, -5)
     GildedRose([item]).update_quality()
     assert item.sell_in == 9
     assert item.quality == -4
 
-@pytest.mark.xfail(bugfix_mode, reason = "fixed value")
+@pytest.mark.xfail(xfail_bug_fix, reason = "fixed value")
 def test_aged_brie_quality_is_never_negative_starting_negative_fixed():
     item = Item("Aged Brie", 10, -5)
     GildedRose([item]).update_quality()
@@ -89,28 +89,28 @@ def test_aged_brie_quality_is_never_over_50_from_50_past_sell_in():
     assert item.sell_in == -2
     assert item.quality == 50
 
-@pytest.mark.xfail(characterization_mode, reason = "bug in original")
+@pytest.mark.xfail(xfail_bug_in_original, reason = "bug in original")
 def test_aged_brie_quality_is_never_over_50_starting_over_50_bug():
     item = Item("Aged Brie", 0, 100)
     GildedRose([item]).update_quality()
     assert item.sell_in == -1
     assert item.quality == 100
 
-@pytest.mark.xfail(bugfix_mode, reason = "fixed value")
+@pytest.mark.xfail(xfail_bug_fix, reason = "fixed value")
 def test_aged_brie_quality_is_never_over_50_starting_over_50_fixed():
     item = Item("Aged Brie", 0, 100)
     GildedRose([item]).update_quality()
     assert item.sell_in == -1
     assert item.quality == 50
 
-@pytest.mark.xfail(characterization_mode, reason = "bug in original")
+@pytest.mark.xfail(xfail_bug_in_original, reason = "bug in original")
 def test_aged_brie_quality_is_never_over_50_starting_over_50_past_sell_in_bug():
     item = Item("Aged Brie", -1, 100)
     GildedRose([item]).update_quality()
     assert item.sell_in == -2
     assert item.quality == 100
 
-@pytest.mark.xfail(bugfix_mode, reason = "fixed value")
+@pytest.mark.xfail(xfail_bug_fix, reason = "fixed value")
 def test_aged_brie_quality_is_never_over_50_starting_over_50_past_sell_in_fixed():
     item = Item("Aged Brie", -1, 100)
     GildedRose([item]).update_quality()
