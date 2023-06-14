@@ -20,7 +20,8 @@ class Sulfuras:
         return item.name == "Sulfuras, Hand of Ragnaros"
     
     def update(self,item):
-        cap_quality(item)
+        item.quality = 80
+
 class AgingItem():
     def update(self,item):
         item.sell_in = item.sell_in -1
