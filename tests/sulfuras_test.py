@@ -13,8 +13,6 @@ def test_sulfuras_doesnt_change_starting_with_80():
     assert item.sell_in == 10
     assert item.quality == 80
 
-
-
 @pytest.mark.xfail(xfail_bug_in_original, reason = "sulfuras quality is not set to 80")
 def test_sulfuras_doesnt_change():
     item = Item("Sulfuras, Hand of Ragnaros", 10, 10)

@@ -89,24 +89,22 @@ def test_normal_quality_is_never_over_50_starting_over_50_fixed():
     assert item.sell_in == -1
     assert item.quality == 48
 
-# three bugs found with complete tests:
-@pytest.mark.xfail(xfail_bug_in_original, reason = "found with characterization")
+# these are not bugs after all, quality is set back to 0:
 def test_failed_characterization_test_2():
     item = Item("normal with any name", -2, 1)
     GildedRose([item]).update_quality()
     assert item.sell_in == -3
     assert item.quality == 0
 
-@pytest.mark.xfail(xfail_bug_in_original, reason = "found with characterization")
 def test_failed_characterization_test_1():
     item = Item("normal with any name", -1, 1)
     GildedRose([item]).update_quality()
     assert item.sell_in == -2
     assert item.quality == 0
 
-@pytest.mark.xfail(xfail_bug_in_original, reason = "found with characterization")
 def test_failed_characterization_test_0():
     item = Item("normal with any name", 0, 1)
     GildedRose([item]).update_quality()
     assert item.sell_in == -1
     assert item.quality == 0
+

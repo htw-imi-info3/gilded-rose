@@ -44,6 +44,7 @@ class NormalItem(AgingItem):
     def is_for(cls, item):
         return True
     def _quality_change(self,item):
+        item.name ="NormalItem(AgingItem)"
         if item.sell_in < 0:
             return -2
         return -1
