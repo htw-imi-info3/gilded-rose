@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
-
+from gilded_rose.refactored.update_item import *
 class GildedRose(object):
 
     def __init__(self, items):
         self.items = items
 
     def update_quality(self):
+        for item in self.items:
+            ItemUpdaterFactory.strategy_for(item).update(item)
+
+    def update_quality2(self):
         for item in self.items:
             if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
                 if item.quality > 0:
