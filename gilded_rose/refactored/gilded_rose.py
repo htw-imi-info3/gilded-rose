@@ -9,7 +9,16 @@ class GildedRose(object):
         pass
 
     def update_quality_backstage_passes(self, item):
-        pass
+        item.sell_in -= 1
+        item.quality += 1
+        if item.sell_in < 10:
+            item.quality += 1
+        if item.sell_in < 5:
+            item.quality += 1
+        if item.sell_in < 0:
+            item.quality = 0
+        if item.quality > 50:
+            item.quality = 50
 
     def update_quality_sulfuras(self, item):
         pass
