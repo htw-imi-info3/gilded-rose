@@ -5,8 +5,32 @@ class GildedRose(object):
     def __init__(self, items):
         self.items = items
 
+    def update_quality_normal(self):
+        pass
+
+    def update_quality_backstage_passes(self):
+        pass
+
+    def update_quality_sulfuras(self):
+        pass
+
+    def update_quality_aged_brie(self):
+        pass
+
     def update_quality(self):
         for item in self.items:
+            if item.name == "Normal Item":
+                self.update_quality_normal()
+                return
+            if item.name == "Backstage passes to a TAFKAL80ETC concert":
+                self.update_quality_backstage_passes()
+                return
+            if item.name == "Sulfuras, Hand of Ragnaros":
+                self.update_quality_sulfuras()
+                return
+            if item.name == "Aged Brie":
+                self.update_quality_aged_brie()
+                return
             if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
                 if item.quality > 0:
                     if item.name != "Sulfuras, Hand of Ragnaros":
