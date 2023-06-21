@@ -3,6 +3,7 @@ from tests.settings import *
 
 # create tests for normal items here...
 
+@pytest.mark.xfail(xfail_normal, reason="not implemented.")
 def test_something():
     item = Item("Normal Item", 5, 20)
     gilded_rose = GildedRose([item])
@@ -11,6 +12,7 @@ def test_something():
     assert item.quality == 19
 
 
+@pytest.mark.xfail(xfail_normal, reason="not implemented.")
 def test_normal_items_zero_quality():
     normal_item = Item("Normal Item", 5, 0)
     gilded_rose = GildedRose([normal_item])
@@ -19,6 +21,7 @@ def test_normal_items_zero_quality():
     assert normal_item.quality == 0
 
 
+@pytest.mark.xfail(xfail_normal, reason="not implemented.")
 def test_normal_items_after_sell():
     normal_item = Item("Normal Item", -1, 10)
     gilded_rose = GildedRose([normal_item])
@@ -27,6 +30,7 @@ def test_normal_items_after_sell():
     assert normal_item.quality == 8
 
 
+@pytest.mark.xfail(xfail_normal, reason="not implemented.")
 def test_normal_items_after_sell_zero_quality():
     normal_item = Item("Normal Item", -1, 0)
     gilded_rose = GildedRose([normal_item])

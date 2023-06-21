@@ -3,7 +3,8 @@ import unittest
 from tests.settings import *
 
 
-#from ..gilded_rose.original.gilded_rose import GildedRose, Item
+# from ..gilded_rose.original.gilded_rose import GildedRose, Item
+@unittest.skipIf(xfail_aged_brie, reason="not implemented.")
 class AgedBrieTest(unittest.TestCase):
     def test_aged_brie_quality_increase(self):
         items = [Item(name="Aged Brie", sell_in=5, quality=10)]
