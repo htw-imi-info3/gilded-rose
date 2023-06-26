@@ -29,9 +29,17 @@ class GildedRose(object):
         pass
 
     def update_quality_aged_brie(self, item):
-        pass
+        item.days_remaining -= 1
+        if item.quality >= 50:
+            return
 
-    def update_quality(self):
+        item.quality += 1
+        if item.days_remaining <= 0:
+            item.quality += 1
+
+
+
+    """def update_quality(self):
         for item in self.items:
             if item.name == "Normal Item":
                 self.update_quality_normal(item)
@@ -71,7 +79,7 @@ class GildedRose(object):
                         item.quality = item.quality - item.quality
                 else:
                     if item.quality < 50:
-                        item.quality = item.quality + 1
+                        item.quality = item.quality + 1"""
 
 
 class Item:

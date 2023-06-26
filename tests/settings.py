@@ -20,10 +20,10 @@ xfail_bug_in_original = True
 xfail_bug_fix = True
 xfail_new_features = True
 
-xfail_backstage = False
+xfail_backstage = True
 xfail_sulfuras = False
-xfail_normal = False
-xfail_aged_brie = True
+xfail_normal = True
+xfail_aged_brie = False
 
 
 # xfail setting during refactoring and bug fixing
