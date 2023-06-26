@@ -6,7 +6,12 @@ class GildedRose(object):
         self.items = items
 
     def update_quality_normal(self, item):
-        pass
+        item.sell_in -= 1
+        item.quality -= 1
+        if item.sell_in < 0:
+            item.quality -= 1
+        if item.quality < 0:
+            item.quality = 0
 
     def update_quality_backstage_passes(self, item):
         item.sell_in -= 1
