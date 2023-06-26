@@ -35,14 +35,14 @@ def test_sulfuras_quality_never_changes():
     gilded_rose.update_quality()
     assert sulfuras.quality == 80
 
-
+@pytest.mark.xfail(xfail_sulfuras, reason="not implemented.")
 def test_sulfuras_sellin_never_changes():
     sulfuras = Item(name="Sulfuras, Hand of Ragnaros", sell_in=0, quality=80)
     gilded_rose = GildedRose(items=[sulfuras])
     gilded_rose.update_quality()
     assert sulfuras.sell_in == 0
 
-
+@pytest.mark.xfail(xfail_sulfuras, reason="not implemented.")
 def test_sulfuras_quality_never_changes_negative_sellin():
     sulfuras = Item(name="Sulfuras, Hand of Ragnaros", sell_in=-1, quality=80)
     gilded_rose = GildedRose(items=[sulfuras])

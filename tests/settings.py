@@ -21,7 +21,7 @@ xfail_bug_fix = True
 xfail_new_features = True
 
 xfail_backstage = False
-xfail_sulfuras = True
+xfail_sulfuras = False
 xfail_normal = False
 xfail_aged_brie = True
 
