@@ -21,22 +21,27 @@ class Sulfuras:
         item.quality = 80
 
 
-class AgingItem():
+class AgingItem:
     def update(self, item):
+        self._age(item)
+        self._cap_quality(item)
+        self._update_quality(item)
+        self._cap_quality(item)
+
+    def _age(self, item):
         item.sell_in = item.sell_in - 1
-        self.cap_quality(item)
-        item.quality += self._quality_change(item)
-        self._update_hook(item)
-        self.cap_quality(item)
 
     def _quality_change(self, item):
         return 0
+
+    def _update_quality(self, item):
+        item.quality = item.quality + self._quality_change(item)
 
     def _update_hook(self, item):
         pass
 
     @staticmethod
-    def cap_quality(item):
+    def _cap_quality(item):
         if item.quality < 0:
             item.quality = 0
         elif item.quality > 50:
@@ -71,7 +76,8 @@ class BackstagePass(AgingItem):
     def is_for(cls, item):
         return item.name == "Backstage passes to a TAFKAL80ETC concert"
 
-    def _update_hook(self, item):
+    def _update_quality(self, item):
+        super()._update_quality(item)
         if item.sell_in < 0:
             item.quality = 0
 
