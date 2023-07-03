@@ -85,7 +85,18 @@ class BackstagePass(AgingItem):
         return 1
 
 
+class ConjuredItem(NormalItem):
+    @classmethod
+    def is_for(cls, item):
+        return item.name == "Conjured Item"
+
+    def _quality_change(self, item):
+        qc_ni = super()._quality_change(item)
+        return 2 * qc_ni
+
+
 ItemUpdaterFactory.register(NormalItem)
 ItemUpdaterFactory.register(AgedBrie)
 ItemUpdaterFactory.register(Sulfuras)
 ItemUpdaterFactory.register(BackstagePass)
+ItemUpdaterFactory.register(ConjuredItem)
