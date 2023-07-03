@@ -24,10 +24,10 @@ class Sulfuras:
 class AgingItem():
     def update(self, item):
         item.sell_in = item.sell_in - 1
-        self.cap_quality(item)
+        self._cap_quality(item)
         item.quality += self._quality_change(item)
         self._update_hook(item)
-        self.cap_quality(item)
+        self._cap_quality(item)
 
     def _quality_change(self, item):
         return 0
@@ -36,7 +36,7 @@ class AgingItem():
         pass
 
     @staticmethod
-    def cap_quality(item):
+    def _cap_quality(item):
         if item.quality < 0:
             item.quality = 0
         elif item.quality > 50:
