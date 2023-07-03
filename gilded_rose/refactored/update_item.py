@@ -1,9 +1,6 @@
 
 
 class Sulfuras:
-    @classmethod
-    def is_for(cls, item):
-        return item.name == "Sulfuras, Hand of Ragnaros"
 
     def update(self, item):
         item.quality = 80
@@ -32,9 +29,6 @@ class AgingItem():
 
 
 class NormalItem(AgingItem):
-    @classmethod
-    def is_for(cls, item):
-        return True
 
     def _quality_change(self, item):
 
@@ -44,9 +38,6 @@ class NormalItem(AgingItem):
 
 
 class AgedBrie(AgingItem):
-    @classmethod
-    def is_for(cls, item):
-        return item.name == "Aged Brie"
 
     def _quality_change(self, item):
         if item.sell_in < 0:
@@ -55,9 +46,6 @@ class AgedBrie(AgingItem):
 
 
 class BackstagePass(AgingItem):
-    @classmethod
-    def is_for(cls, item):
-        return item.name == "Backstage passes to a TAFKAL80ETC concert"
 
     def _update_hook(self, item):
         if item.sell_in < 0:
@@ -74,9 +62,6 @@ class BackstagePass(AgingItem):
 
 
 class ConjuredItem(NormalItem):
-    @classmethod
-    def is_for(cls, item):
-        return item.name == "Conjured Item"
 
     def _quality_change(self, item):
         qc_ni = super()._quality_change(item)
@@ -99,4 +84,3 @@ class ItemUpdaterFactory:
     def strategy_for(cls, item):
         clazz = UPDATERS.get(item.name, UPDATERS[DEFAULT_KEY])
         return clazz()
-
