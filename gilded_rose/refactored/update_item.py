@@ -1,5 +1,33 @@
+
+def create_update_function(special_updater):
+    def cap(item):
+        if item.quality < 0:
+            item.quality = 0
+        elif item.quality > 50:
+            item.quality = 50
+                
+    def template_function(item):
+        cap(item)
+        item.sell_in = item.sell_in - 1
+        special_updater(item)
+        cap(item)
+    return template_function
+
+
+def update_normal(item):
+    change = -2 if item.sell_in < 0 else -1
+    item.quality = item.quality + change
+
+# "Normal Item"
+UPDATERS = {}
+UPDATERS = {"normal with any name": create_update_function(update_normal)}
+
+
 def update(item):
-    ItemUpdaterFactory.strategy_for(item).update(item)
+    if item.name in UPDATERS.keys():
+        UPDATERS[item.name](item)
+    else:
+        ItemUpdaterFactory.strategy_for(item).update(item)
 
 class ItemUpdaterFactory:
     class_list = []
