@@ -9,7 +9,8 @@ def create_update_function(special_updater):
     def template_function(item):
         cap(item)
         item.sell_in = item.sell_in - 1
-        special_updater(item)
+        change = special_updater(item)
+        item.quality = item.quality + change
         cap(item)
 
     return template_function
@@ -17,27 +18,30 @@ def create_update_function(special_updater):
 
 def update_normal(item):
     change = -2 if item.sell_in < 0 else -1
-    item.quality = item.quality + change
+    return change
+    #item.quality = item.quality + change
 
 
 def update_conjured(item):
     change = -4 if item.sell_in < 0 else -2
-    item.quality = item.quality + change
+    return change
+    #item.quality = item.quality + change
 
 
 def update_aged_brie(item):
     change = 2 if item.sell_in < 0 else 1
-    item.quality = item.quality + change
+    return change
+    #item.quality = item.quality + change
 
 
 def update_backstage_pass(item):
-    def backstage_change():
-        if item.sell_in < 5:
-            return 3
-        if item.sell_in < 10:
-            return 2
-        return 1
-    item.quality = item.quality + backstage_change()
+    #def backstage_change():
+    if item.sell_in < 5:
+        return 3
+    if item.sell_in < 10:
+        return 2
+    return 1
+    #item.quality = item.quality + backstage_change()
 
 def cut_after(update_function):
     def cut_past_sell_in(item):
@@ -57,7 +61,7 @@ UPDATERS = {DEFAULT_KEY: create_update_function(update_normal),
             "Conjured Item": create_update_function(update_conjured),
             "Aged Brie": create_update_function(update_aged_brie),
             "Backstage passes to a TAFKAL80ETC concert":
-                create_update_function(cut_after(update_backstage_pass)),
+                cut_after(create_update_function(update_backstage_pass)),
             "Sulfuras, Hand of Ragnaros": update_sulfuras
             }
 
