@@ -1,3 +1,6 @@
+def update(item):
+    ItemUpdaterFactory.strategy_for(item).update(item)
+
 class ItemUpdaterFactory:
     class_list = []
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from gilded_rose.refactored.update_item import *
+from gilded_rose.refactored.update_item import update
 class GildedRose(object):
 
     def __init__(self, items):
@@ -7,7 +7,7 @@ class GildedRose(object):
 
     def update_quality(self):
         for item in self.items:
-            ItemUpdaterFactory.strategy_for(item).update(item)
+            update(item)
 
     def update_quality2(self):
         for item in self.items:
