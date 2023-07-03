@@ -1,15 +1,3 @@
-class ItemUpdaterFactory:
-    class_list = []
-
-    @classmethod
-    def register(cls, clazz):
-        cls.class_list.insert(0, clazz)
-
-    @classmethod
-    def strategy_for(cls, item):
-        for clazz in cls.class_list:
-            if clazz.is_for(item):
-                return clazz()
 
 
 class Sulfuras:
@@ -95,8 +83,20 @@ class ConjuredItem(NormalItem):
         return 2 * qc_ni
 
 
-ItemUpdaterFactory.register(NormalItem)
-ItemUpdaterFactory.register(AgedBrie)
-ItemUpdaterFactory.register(Sulfuras)
-ItemUpdaterFactory.register(BackstagePass)
-ItemUpdaterFactory.register(ConjuredItem)
+DEFAULT_KEY = "----default-----"
+
+UPDATERS = {DEFAULT_KEY: NormalItem,
+            "Conjured Item": ConjuredItem,
+            "Aged Brie": AgedBrie,
+            "Backstage passes to a TAFKAL80ETC concert":
+                BackstagePass,
+            "Sulfuras, Hand of Ragnaros": Sulfuras
+            }
+
+
+class ItemUpdaterFactory:
+    @classmethod
+    def strategy_for(cls, item):
+        clazz = UPDATERS.get(item.name, UPDATERS[DEFAULT_KEY])
+        return clazz()
+
