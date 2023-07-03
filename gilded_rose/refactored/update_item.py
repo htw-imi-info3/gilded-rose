@@ -18,9 +18,16 @@ def update_normal(item):
     change = -2 if item.sell_in < 0 else -1
     item.quality = item.quality + change
 
+
+def update_conjured(item):
+    change = -4 if item.sell_in < 0 else -2
+    item.quality = item.quality + change
+
 # "Normal Item"
-UPDATERS = {}
-UPDATERS = {"normal with any name": create_update_function(update_normal)}
+
+UPDATERS = {"normal with any name": create_update_function(update_normal),
+            "Conjured Item": create_update_function(update_conjured),
+            }
 
 
 def update(item):
