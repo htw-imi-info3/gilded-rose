@@ -43,7 +43,7 @@ def quality_change_backstage_pass(item):
     return 1
 
 
-def cut_after(update_function):
+def quality_zero_after_sell_in(update_function):
     def cut_past_sell_in(item):
         update_function(item)
         if item.sell_in < 0:
@@ -62,7 +62,7 @@ UPDATERS = {
     "Conjured Item": create_update_function(quality_change_conjured),
     "Aged Brie": create_update_function(quality_change_aged_brie),
     "Backstage passes to a TAFKAL80ETC concert":
-        cut_after(create_update_function(
+        quality_zero_after_sell_in(create_update_function(
             quality_change_backstage_pass)),
     "Sulfuras, Hand of Ragnaros": update_sulfuras
     }
