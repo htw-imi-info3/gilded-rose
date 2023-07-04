@@ -3,7 +3,7 @@ class Item:
         self.field = field
 
 
-def set_field_creator(self):
+def create_set_field(self):
     def set_field(value):
         self.field = value
     return set_field
@@ -16,7 +16,7 @@ def test_item():
 
 def test_alter_item():
     item = Item('initial value')
-    item.update = set_field_creator(item)
+    item.update = create_set_field(item)
     item.update('new value')
     assert item.field == 'new value'
     
