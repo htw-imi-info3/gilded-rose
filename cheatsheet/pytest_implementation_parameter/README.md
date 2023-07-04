@@ -6,5 +6,5 @@ This demonstrates how to pass in an implementation via command line parameters.
 
 cd cheatsheet/pytest_implementation_parameter
 
-pytest -rxX --impl impl_a 
-pytest -rxX --impl impl_b
+pytest -rxX --impl_demo impl_a 
+pytest -rxX --impl_demo impl_b
