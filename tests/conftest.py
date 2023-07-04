@@ -1,7 +1,6 @@
 import pytest
 from gilded_rose.original.gilded_rose import Item
 from gilded_rose.original.gilded_rose import GildedRose as GildedRose_Original
-from gilded_rose.refactored.gilded_rose import GildedRose as GildedRose_Refactored
 from gilded_rose.functional.gilded_rose import GildedRose as GildedRose_Functional
 from gilded_rose.inheritance.gilded_rose import GildedRose as GildedRose_Inheritance
 from gilded_rose.registry.gilded_rose import GildedRose as GildedRose_Registry
@@ -13,7 +12,6 @@ def pytest_addoption(parser):
 
 IMPLEMENTATIONS = {
     'original': GildedRose_Original,
-    'refactored': GildedRose_Refactored,
     'functional': GildedRose_Functional,
     'inheritance': GildedRose_Inheritance,
     'registry': GildedRose_Registry}

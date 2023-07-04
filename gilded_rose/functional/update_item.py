@@ -1,3 +1,11 @@
+
+def update(item):
+    if item.name in UPDATERS.keys():
+        UPDATERS[item.name](item)
+    else:
+        UPDATERS[DEFAULT_KEY](item)
+
+
 def cap(item):
     if item.quality < 0:
         item.quality = 0
@@ -49,18 +57,12 @@ def update_sulfuras(item):
 
 DEFAULT_KEY = "----default-----"
 
-UPDATERS = {DEFAULT_KEY: create_update_function(quality_change_normal),
-            "Conjured Item": create_update_function(quality_change_conjured),
-            "Aged Brie": create_update_function(quality_change_aged_brie),
-            "Backstage passes to a TAFKAL80ETC concert":
-                cut_after(create_update_function(
-                    quality_change_backstage_pass)),
-            "Sulfuras, Hand of Ragnaros": update_sulfuras
-            }
-
-
-def update(item):
-    if item.name in UPDATERS.keys():
-        UPDATERS[item.name](item)
-    else:
-        UPDATERS[DEFAULT_KEY](item)
+UPDATERS = {
+    DEFAULT_KEY: create_update_function(quality_change_normal),
+    "Conjured Item": create_update_function(quality_change_conjured),
+    "Aged Brie": create_update_function(quality_change_aged_brie),
+    "Backstage passes to a TAFKAL80ETC concert":
+        cut_after(create_update_function(
+            quality_change_backstage_pass)),
+    "Sulfuras, Hand of Ragnaros": update_sulfuras
+    }

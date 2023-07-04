@@ -8,7 +8,7 @@ import pytest
 
 #from gilded_rose.gilded_rose import GildedRose, Item
 
-from gilded_rose.refactored.gilded_rose import GildedRose, Item
+from gilded_rose.registry.gilded_rose import GildedRose, Item
 
 # XFAIL FLAGS
 # use this to be able to refactor without the need to pertaining found

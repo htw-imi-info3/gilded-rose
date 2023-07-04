@@ -1,4 +1,4 @@
-from tests.settings import *
+from .settings import *
 
 # create tests for normal items here...
 
