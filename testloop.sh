@@ -12,7 +12,8 @@ while true; do
     clear
     # use this to stop at first failure:
     # pytest -x -vv $subdir
-    pytest -vv -rxX  $subdir
+
+    pytest -vv -rxX $subdir --impl refactored
     fswatch ./**/*.py  -1
 done
 
