@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-echo "-----1: ----$1"
+#echo "-----1: ----$1"
 if [ $1 ]; then
     subdir=$1
 else
@@ -13,11 +13,21 @@ while true; do
     # use this to stop at first failure:
     # pytest -x -vv $subdir
     #  pytest -vv -rxX $subdir --impl functional
-   
+    echo "--------------------------------------------------------------------------------------------------------------"
+    echo "--------------------------------------------------------------------------------------------------------------"
+    echo
+    echo
+    echo "                   $0"
+    echo
+    echo
+    echo "--------------------------------------------------------------------------------------------------------------"
+    echo "--------------------------------------------------------------------------------------------------------------"
     pytest $subdir --impl original
     pytest $subdir --impl functional
     pytest $subdir --impl inheritance
     pytest $subdir --impl registry
+    pytest $subdir --impl trick_the_goblin
+    pytest $subdir --impl trick_the_goblin_improved
     fswatch ./**/*.py  -1
 done
 
