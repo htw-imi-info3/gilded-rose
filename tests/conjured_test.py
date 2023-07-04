@@ -1,5 +1,4 @@
-from tests.settings import GildedRose, Item, pytest, xfail_new_features
-
+from tests.settings import pytest, Item, xfail_new_features
 
 @pytest.mark.xfail(xfail_new_features, reason="add conjured item")
 def test_conjured_5_30(update):
