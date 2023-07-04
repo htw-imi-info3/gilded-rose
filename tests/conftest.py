@@ -10,7 +10,8 @@ def pytest_addoption(parser):
 
 IMPLEMENTATIONS = {
     'original': GildedRose_Original,
-    'refactored': GildedRose_Refactored}
+    'refactored': GildedRose_Refactored,
+    }
 
 
 @pytest.fixture(scope='session')
