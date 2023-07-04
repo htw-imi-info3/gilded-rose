@@ -75,21 +75,21 @@ classDiagram
       _age()
       _cap_quality()
       _update_quality()
-      __quality_change()
+      _quality_change()
     }
     class NormalItem{
-      __quality_change()
+      _quality_change()
     }
      class AgedBrie{
-      __quality_change()
+      _quality_change()
     }
     class BackstagePass{
       _update_quality()
-      __quality_change()
+      _quality_change()
       
     }
     class ConjuredItem{
-      __quality_change()
+      _quality_change()
     }
   
     AgingItem <|-- NormalItem

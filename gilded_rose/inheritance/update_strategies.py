@@ -16,9 +16,9 @@ class AgingItem():
         item.sell_in = item.sell_in - 1
 
     def _update_quality(self, item):
-        item.quality += self.__quality_change(item)
+        item.quality += self._quality_change(item)
 
-    def __quality_change(self, item):
+    def _quality_change(self, item):
         return 0
 
     @staticmethod
@@ -31,7 +31,7 @@ class AgingItem():
 
 class NormalItem(AgingItem):
 
-    def __quality_change(self, item):
+    def _quality_change(self, item):
 
         if item.sell_in < 0:
             return -2
@@ -40,7 +40,7 @@ class NormalItem(AgingItem):
 
 class AgedBrie(AgingItem):
 
-    def __quality_change(self, item):
+    def _quality_change(self, item):
         if item.sell_in < 0:
             return 2
         return 1
@@ -52,9 +52,9 @@ class BackstagePass(AgingItem):
         if item.sell_in < 0:
             item.quality = 0
         else:
-            item.quality += self.__quality_change(item)
+            item.quality += self._quality_change(item)
             
-    def __quality_change(self, item):
+    def _quality_change(self, item):
         if item.sell_in < 0:
             return 0
         if item.sell_in < 5:
@@ -66,5 +66,5 @@ class BackstagePass(AgingItem):
 
 class ConjuredItem(NormalItem):
 
-    def __quality_change(self, item):
-        return 2 * super().__quality_change(item)
+    def _quality_change(self, item):
+        return 2 * super()._quality_change(item)
