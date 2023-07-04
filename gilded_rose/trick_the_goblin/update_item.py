@@ -1,9 +1,21 @@
 
 def update(item):
-    if item.name in UPDATERS.keys():
-        UPDATERS[item.name](item)
-    else:
-        UPDATERS[DEFAULT_KEY](item)
+    # this could be done in gilded rose init
+    attach_updater(item)
+    # tada! calling update on item.
+    item.update()
+
+
+def attach_updater(item):
+    updater = UPDATERS.get(item.name, UPDATERS[DEFAULT_KEY])
+
+    def update():
+        updater(item)
+
+    item.update = update
+    return item
+
+# below: same as functional
 
 
 def cap(item):
@@ -65,4 +77,4 @@ UPDATERS = {
         quality_zero_after_sell_in(create_update_function(
             quality_change_backstage_pass)),
     "Sulfuras, Hand of Ragnaros": update_sulfuras
-    }
+}
