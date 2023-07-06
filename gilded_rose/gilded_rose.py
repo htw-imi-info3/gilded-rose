@@ -24,4 +24,4 @@ def attach_updater(item):
         updater(item)
 
     item.update = update
-    return item 
+    return item

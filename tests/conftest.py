@@ -36,7 +36,7 @@ def do_something(request):
 
     pass
     
-    
+
 @pytest.fixture(scope='session')
 def update(request):
     impl_value = request.config.option.impl
@@ -49,7 +49,7 @@ def update(request):
         def _update(item):
             gilded_rose([item]).update_quality()
             return item
-    elif impl_value in ['functional', 'inheritance', 'registry', 'trick_the_goblin', 'trick_the_goblin_improved', 'fun_decorators']:
+    elif impl_value in ['functional', 'inheritance', 'registry', 'trick_the_goblin', 'trick_the_goblin_improved']:
         impl = importlib.import_module(f"gilded_rose.{impl_value}.gilded_rose")
         gilded_rose = impl.GildedRose
         gilded_rose = IMPLEMENTATIONS[impl_value]
@@ -58,8 +58,14 @@ def update(request):
             gilded_rose([item]).update_quality()
             return item
     else:
-        pass
-   
+        module_name = f"gilded_rose.{impl_value}.update_item"
+        impl = importlib.import_module(module_name)
+
+        def _update(item):
+            updater = impl.get_updater_for(item)
+            updater(item)
+            return item
+
     return _update
 
 
