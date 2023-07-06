@@ -1,4 +1,4 @@
-from gilded_rose.fun_decorators.update_item import get_updater_for
+from gilded_rose.refactored.fun_decorators.update_item import get_updater_for
 
 # this complete GildedRose is tested via the test conf
 # pytest $subdir --impl refactored
