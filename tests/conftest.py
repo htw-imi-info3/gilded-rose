@@ -30,7 +30,7 @@ def update(request):
             gilded_rose([item]).update_quality()
             return item
     else:
-        module_name = f"gilded_rose.{impl_value}.update_item"
+        module_name = f"gilded_rose.refactored.{impl_value}.update_item"
         impl = importlib.import_module(module_name)
 
         def _update(item):
