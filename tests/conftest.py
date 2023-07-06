@@ -8,6 +8,7 @@ from gilded_rose.trick_the_goblin.gilded_rose import GildedRose as GildedRose_Go
 from gilded_rose.trick_the_goblin.gilded_rose_improved import GildedRose as GildedRoseImproved
 from gilded_rose.fun_decorators.gilded_rose import GildedRose as GildedRoseDecorators
 
+
 def pytest_addoption(parser):
     parser.addoption("--impl", action="store")
 
