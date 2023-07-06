@@ -4,6 +4,10 @@ def update(item):
     update(item)
 
 
+def get_updater_for(item):
+    return UPDATERS.get(item.name, UPDATERS[DEFAULT_KEY])
+
+
 def update_factory(quality_change):
     def update(item):
         _cap(item)

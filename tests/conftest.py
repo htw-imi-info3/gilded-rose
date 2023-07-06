@@ -1,5 +1,6 @@
 import pytest
 from gilded_rose.original.gilded_rose import Item
+from gilded_rose.gilded_rose import GildedRose
 from gilded_rose.original.gilded_rose import GildedRose as GildedRose_Original
 from gilded_rose.functional.gilded_rose import GildedRose as GildedRose_Functional
 from gilded_rose.inheritance.gilded_rose import GildedRose as GildedRose_Inheritance
@@ -14,6 +15,7 @@ def pytest_addoption(parser):
 
 
 IMPLEMENTATIONS = {
+    'refactored' : GildedRose,
     'original': GildedRose_Original,
     'functional': GildedRose_Functional,
     'inheritance': GildedRose_Inheritance,
@@ -29,11 +31,18 @@ def update(request):
     impl_value = request.config.option.impl
     if impl_value is None or impl_value not in IMPLEMENTATIONS.keys():
         pytest.skip()
-
-    gilded_rose = IMPLEMENTATIONS[impl_value]
-
-    def _update(item):
-        gilded_rose([item]).update_quality()
-        return item
+        
+    if impl_value in ['original', 'refactored']:
+        gilded_rose = IMPLEMENTATIONS[impl_value]
+        
+        def _update(item):
+            gilded_rose([item]).update_quality()
+            return item
+    else:
+        gilded_rose = IMPLEMENTATIONS[impl_value]
+        
+        def _update(item):
+            gilded_rose([item]).update_quality()
+            return item
 
     return _update

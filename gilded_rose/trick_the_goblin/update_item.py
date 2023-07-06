@@ -5,6 +5,8 @@ def update(item):
     # tada! calling update on item.
     item.update()
 
+def get_updater_for(item):
+    return UPDATERS.get(item.name, UPDATERS[DEFAULT_KEY])
 
 def attach_updater(item):
     updater = UPDATERS.get(item.name, UPDATERS[DEFAULT_KEY])
