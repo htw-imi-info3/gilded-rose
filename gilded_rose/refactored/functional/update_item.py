@@ -1,9 +1,4 @@
 
-def update(item):
-    if item.name in UPDATERS.keys():
-        UPDATERS[item.name](item)
-    else:
-        UPDATERS[DEFAULT_KEY](item)
 
 def get_updater_for(item):
     return UPDATERS.get(item.name, UPDATERS[DEFAULT_KEY])
