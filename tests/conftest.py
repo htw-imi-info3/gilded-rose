@@ -1,11 +1,12 @@
 import pytest
 import importlib
-from gilded_rose.gilded_rose import GildedRose
+from gilded_rose.refactored.gilded_rose import GildedRose
 from gilded_rose.original.gilded_rose import GildedRose as GildedRose_Original
 
 
 def pytest_addoption(parser):
     parser.addoption("--impl", action="store")
+
 
 # implementations that cannot be imported from update_item.get_updater_for
 IMPLEMENTATIONS = {
@@ -17,11 +18,13 @@ IMPLEMENTATIONS = {
 @pytest.fixture(scope='session')
 def update(request):
     impl_value = request.config.option.impl
-    if impl_value is None or impl_value not in IMPLEMENTATIONS.keys():
+    if impl_value is None or False:
         pytest.skip()
      
     if _impl_includes_gilded_rose(impl_value):
-        gilded_rose = IMPLEMENTATIONS[impl_value]
+        module_name = f"gilded_rose.{impl_value}.gilded_rose"
+        impl = importlib.import_module(module_name)
+        gilded_rose = impl.GildedRose
         
         def _update(item):
             gilded_rose([item]).update_quality()
@@ -39,4 +42,4 @@ def update(request):
 
 
 def _impl_includes_gilded_rose(impl_value):
-    return impl_value in IMPLEMENTATIONS.keys()
+    return impl_value in ['original', 'refactored']
