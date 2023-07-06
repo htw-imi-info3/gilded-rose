@@ -5,7 +5,7 @@ from gilded_rose.original.gilded_rose import GildedRose as GildedRose_Original
 
 
 
-from gilded_rose.functional.gilded_rose import GildedRose as GildedRose_Functional
+#from gilded_rose.functional.gilded_rose import GildedRose as GildedRose_Functional
 from gilded_rose.inheritance.gilded_rose import GildedRose as GildedRose_Inheritance
 from gilded_rose.registry.gilded_rose import GildedRose as GildedRose_Registry
 from gilded_rose.trick_the_goblin.gilded_rose import GildedRose as GildedRose_Goblin
@@ -21,11 +21,11 @@ def pytest_addoption(parser):
 IMPLEMENTATIONS = {
     'refactored': GildedRose,
     'original': GildedRose_Original,
-    'functional': GildedRose_Functional,
-    'inheritance': GildedRose_Inheritance,
-    'registry': GildedRose_Registry,
-    'trick_the_goblin': GildedRose_Goblin,
-    'trick_the_goblin_improved': GildedRoseImproved,
+   # 'functional': GildedRose_Functional,
+   # 'inheritance': GildedRose_Inheritance,
+   # 'registry': GildedRose_Registry,
+   # 'trick_the_goblin': GildedRose_Goblin,
+   # 'trick_the_goblin_improved': GildedRoseImproved,
   #  'fun_decorators': GildedRoseDecorators, 
     }
 
@@ -43,7 +43,8 @@ def update(request):
         def _update(item):
             gilded_rose([item]).update_quality()
             return item
-    elif impl_value in ['functional', 'inheritance', 'registry', 'trick_the_goblin', 'trick_the_goblin_improved']:
+    elif impl_value in IMPLEMENTATIONS.keys():
+   # ['functional', 'inheritance', 'registry', 'trick_the_goblin', 'trick_the_goblin_improved']:
         impl = importlib.import_module(f"gilded_rose.{impl_value}.gilded_rose")
         gilded_rose = impl.GildedRose
         gilded_rose = IMPLEMENTATIONS[impl_value]
