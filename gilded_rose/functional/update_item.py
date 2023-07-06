@@ -5,6 +5,9 @@ def update(item):
     else:
         UPDATERS[DEFAULT_KEY](item)
 
+def get_updater_for(item):
+    return UPDATERS.get(item.name, UPDATERS[DEFAULT_KEY])
+
 
 def cap(item):
     if item.quality < 0:

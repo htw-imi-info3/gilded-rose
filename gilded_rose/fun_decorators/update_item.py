@@ -22,7 +22,7 @@ def update_factory(quality_change):
             item.quality = 0
         elif item.quality > 50:
             item.quality = 50
-   
+
     return update
 
 

@@ -13,6 +13,7 @@ from gilded_rose.trick_the_goblin.gilded_rose_improved import GildedRose as Gild
 
 impl = importlib.import_module('gilded_rose.registry.gilded_rose')
 
+
 def pytest_addoption(parser):
     parser.addoption("--impl", action="store")
 
@@ -28,12 +29,6 @@ IMPLEMENTATIONS = {
   #  'fun_decorators': GildedRoseDecorators, 
     }
 
-
-@pytest.fixture(scope="session", autouse=True)
-def do_something(request):
-    # prepare something ahead of all tests
-
-    pass
     
 
 @pytest.fixture(scope='session')
