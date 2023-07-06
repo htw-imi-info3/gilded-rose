@@ -1,8 +1,4 @@
 
-def update(item):
-    update = UPDATERS.get(item.name, UPDATERS[DEFAULT_KEY])
-    update(item)
-
 
 def get_updater_for(item):
     return UPDATERS.get(item.name, UPDATERS[DEFAULT_KEY])
