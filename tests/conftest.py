@@ -4,16 +4,6 @@ from gilded_rose.gilded_rose import GildedRose
 from gilded_rose.original.gilded_rose import GildedRose as GildedRose_Original
 
 
-
-#from gilded_rose.functional.gilded_rose import GildedRose as GildedRose_Functional
-from gilded_rose.inheritance.gilded_rose import GildedRose as GildedRose_Inheritance
-from gilded_rose.registry.gilded_rose import GildedRose as GildedRose_Registry
-from gilded_rose.trick_the_goblin.gilded_rose import GildedRose as GildedRose_Goblin
-from gilded_rose.trick_the_goblin.gilded_rose_improved import GildedRose as GildedRoseImproved
-
-impl = importlib.import_module('gilded_rose.registry.gilded_rose')
-
-
 def pytest_addoption(parser):
     parser.addoption("--impl", action="store")
 
@@ -21,15 +11,8 @@ def pytest_addoption(parser):
 IMPLEMENTATIONS = {
     'refactored': GildedRose,
     'original': GildedRose_Original,
-   # 'functional': GildedRose_Functional,
-   # 'inheritance': GildedRose_Inheritance,
-   # 'registry': GildedRose_Registry,
-   # 'trick_the_goblin': GildedRose_Goblin,
-   # 'trick_the_goblin_improved': GildedRoseImproved,
-  #  'fun_decorators': GildedRoseDecorators, 
     }
 
-    
 
 @pytest.fixture(scope='session')
 def update(request):
