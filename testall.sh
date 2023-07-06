@@ -29,7 +29,6 @@ while true; do
     pytest $subdir --impl inheritance
     pytest $subdir --impl registry
     pytest $subdir --impl trick_the_goblin
-    pytest $subdir --impl trick_the_goblin_improved
     pytest $subdir --impl fun_decorators
 
     fswatch ./**/*.py  -1
