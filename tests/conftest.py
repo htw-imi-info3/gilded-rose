@@ -29,11 +29,13 @@ IMPLEMENTATIONS = {
     'fun_decorators': GildedRoseDecorators, 
     }
 
+
 @pytest.fixture(scope="session", autouse=True)
 def do_something(request):
     # prepare something ahead of all tests
 
     pass
+    
     
 @pytest.fixture(scope='session')
 def update(request):
@@ -41,7 +43,7 @@ def update(request):
     if impl_value is None or impl_value not in IMPLEMENTATIONS.keys():
         pytest.skip()
         
-    if impl_value in ['original', 'refactored']:
+    if _impl_includes_gilded_rose(impl_value):
         gilded_rose = IMPLEMENTATIONS[impl_value]
         
         def _update(item):
@@ -59,3 +61,7 @@ def update(request):
         pass
    
     return _update
+
+
+def _impl_includes_gilded_rose(impl_value):
+    return impl_value in ['original', 'refactored']
