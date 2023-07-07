@@ -8,12 +8,11 @@ def get_updater_for(item):
 
 @update_factory
 def quality_change_normal(item):
+    return _quality_change_normal(item)
+
+
+def _quality_change_normal(item):
     return -2 if item.sell_in < 0 else -1
-
-
-@update_factory
-def quality_change_conjured(item):
-    return quality_change_normal(item) * 2
 
 
 @update_factory
@@ -39,7 +38,6 @@ DEFAULT_KEY = "----default-----"
 
 UPDATERS = {
     DEFAULT_KEY: quality_change_normal,
-    "Conjured Item": quality_change_conjured,
     "Aged Brie": quality_change_aged_brie,
     "Backstage passes to a TAFKAL80ETC concert":
         quality_change_backstage_pass,

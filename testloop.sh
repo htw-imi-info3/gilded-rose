@@ -14,7 +14,9 @@ while true; do
     # pytest -x -vv $subdir
 
     #pytest -vv -rxX $subdir --impl trick_the_goblin
-    pytest $subdir --impl objects.registry
+    # pytest $subdir  -vv --impl functional.decorated
+    pytest --impl original cheatsheet/pytest_configured_config
+    pytest --impl refactored cheatsheet/pytest_configured_config
     fswatch ./**/*.py  -1
 done
 

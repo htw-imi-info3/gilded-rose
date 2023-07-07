@@ -22,11 +22,10 @@ while true; do
     echo
     echo "--------------------------------------------------------------------------------------------------------------"
     echo "--------------------------------------------------------------------------------------------------------------"
+
     pytest $subdir --impl original
     pytest $subdir --impl refactored
 
-    #pytest $subdir --impl fun_plain
-    #pytest $subdir --impl fun_decorators
     pytest $subdir --impl functional.plain
     pytest $subdir --impl functional.decorated
     pytest $subdir --impl objects.inheritance

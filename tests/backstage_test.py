@@ -1,4 +1,5 @@
-from tests.settings import pytest, Item, xfail_bug_in_original, xfail_bug_fix
+from tests.settings import pytest, Item
+from tests.settings import XFAILSETTINGS as XFS
 
 # - "Backstage passes", like aged brie, increases in Quality as its SellIn value approaches;
 # 	Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
@@ -53,14 +54,14 @@ def test_backstage_pass_is_useless_after_sell_in(update):
     assert item.quality == 0
 
 
-@pytest.mark.xfail(xfail_bug_in_original, reason="bug in original")
+@pytest.mark.xfail(XFS.xfail_bug_in_original, reason="bug in original")
 def test_backstage_pass_quality_is_never_negative_starting_negative_fails(update):
     item = update(Item("Backstage passes to a TAFKAL80ETC concert", 10, -5))
     assert item.sell_in == 9
     assert item.quality == -3
 
 
-@pytest.mark.xfail(xfail_bug_fix, reason="fixed value")
+@pytest.mark.xfail(XFS.xfail_bug_fix, reason="fixed value")
 def test_backstage_pass_quality_is_never_negative_starting_negative_fixed(update):
     item = update(Item("Backstage passes to a TAFKAL80ETC concert", 10, -5))
     assert item.sell_in == 9
@@ -115,14 +116,14 @@ def test_backstage_pass_quality_is_never_over_50_from_50_at_7(update):
     assert item.quality == 50
 
 
-@pytest.mark.xfail(xfail_bug_in_original, reason="bug in original")
+@pytest.mark.xfail(XFS.xfail_bug_in_original, reason="bug in original")
 def test_backstage_pass_quality_is_never_over_50_starting_over_50_bug(update):
     item = update(Item("Backstage passes to a TAFKAL80ETC concert", 6, 100))
     assert item.sell_in == 5
     assert item.quality == 100
 
 
-@pytest.mark.xfail(xfail_bug_fix, reason="fixed value")
+@pytest.mark.xfail(XFS.xfail_bug_fix, reason="fixed value")
 def test_backstage_pass_quality_is_never_over_50_starting_over_50_fixed(update):
     item = update(Item("Backstage passes to a TAFKAL80ETC concert", 6, 100))
     assert item.sell_in == 5

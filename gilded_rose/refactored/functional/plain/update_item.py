@@ -12,10 +12,6 @@ def quality_change_normal(item):
     return -2 if item.sell_in < 0 else -1
 
 
-def quality_change_conjured(item):
-    return quality_change_normal(item) * 2
-
-
 def quality_change_aged_brie(item):
     return 2 if item.sell_in < 0 else 1
 
@@ -38,7 +34,6 @@ DEFAULT_KEY = "----default-----"
 # need to be explicitly wrapped
 UPDATERS = {
     DEFAULT_KEY: update_factory(quality_change_normal),
-    "Conjured Item": update_factory(quality_change_conjured),
     "Aged Brie": update_factory(quality_change_aged_brie),
     "Backstage passes to a TAFKAL80ETC concert":
         useless_after_sell_in(update_factory(

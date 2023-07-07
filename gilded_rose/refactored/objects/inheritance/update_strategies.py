@@ -63,8 +63,3 @@ class BackstagePass(AgingItem):
             return 2
         return 1
 
-
-class ConjuredItem(NormalItem):
-
-    def _quality_change(self, item):
-        return 2 * super()._quality_change(item)
