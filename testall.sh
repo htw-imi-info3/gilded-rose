@@ -28,8 +28,9 @@ while true; do
     #pytest $subdir --impl fun_plain
     #pytest $subdir --impl fun_decorators
     pytest $subdir --impl functional.plain
-    pytest $subdir --impl inheritance
-    pytest $subdir --impl registry
+    pytest $subdir --impl functional.decorated
+    pytest $subdir --impl objects.inheritance
+    pytest $subdir --impl objects.registry
 
 
     fswatch ./**/*.py  -1

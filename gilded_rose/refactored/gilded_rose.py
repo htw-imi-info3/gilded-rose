@@ -1,4 +1,8 @@
-from gilded_rose.refactored.functional.decorated.update_item\
+# uncomment one of these four implementations:
+# from gilded_rose.refactored.functional.plain.update_item\
+# from gilded_rose.refactored.functional.decorated.update_item\
+# from gilded_rose.refactored.objects.inheritance.update_item\
+from gilded_rose.refactored.objects.registry.update_item\
     import get_updater_for
 
 # this complete GildedRose is tested via the test conf
