@@ -25,11 +25,11 @@ while true; do
     pytest $subdir --impl original
     pytest $subdir --impl refactored
 
-    pytest $subdir --impl functional
+    pytest $subdir --impl fun_plain
+    pytest $subdir --impl fun_decorators
     pytest $subdir --impl inheritance
     pytest $subdir --impl registry
-    pytest $subdir --impl trick_the_goblin
-    pytest $subdir --impl fun_decorators
+
 
     fswatch ./**/*.py  -1
 done
