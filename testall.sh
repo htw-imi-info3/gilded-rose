@@ -23,12 +23,16 @@ while true; do
     echo "--------------------------------------------------------------------------------------------------------------"
     echo "--------------------------------------------------------------------------------------------------------------"
     pytest $subdir --impl original
-    pytest $subdir --impl functional
-    pytest $subdir --impl inheritance
-    pytest $subdir --impl registry
-    pytest $subdir --impl trick_the_goblin
-    pytest $subdir --impl trick_the_goblin_improved
-    pytest $subdir --impl fun_decorators
+    pytest $subdir --impl refactored
+
+    #pytest $subdir --impl fun_plain
+    #pytest $subdir --impl fun_decorators
+    pytest $subdir --impl functional.plain
+    pytest $subdir --impl functional.decorated
+    pytest $subdir --impl objects.inheritance
+    pytest $subdir --impl objects.registry
+
+
     fswatch ./**/*.py  -1
 done
 

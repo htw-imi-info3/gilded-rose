@@ -1,6 +1,10 @@
 from .update_strategies import NormalItem, AgedBrie, BackstagePass, Sulfuras, ConjuredItem
 
 
+def get_updater_for(item):
+    return ItemUpdaterFactory.strategy_for(item).update
+
+
 def update(item):
     ItemUpdaterFactory.strategy_for(item).update(item)
 

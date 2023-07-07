@@ -13,7 +13,8 @@ while true; do
     # use this to stop at first failure:
     # pytest -x -vv $subdir
 
-    pytest -vv -rxX $subdir --impl trick_the_goblin
+    #pytest -vv -rxX $subdir --impl trick_the_goblin
+    pytest $subdir --impl objects.registry
     fswatch ./**/*.py  -1
 done
 

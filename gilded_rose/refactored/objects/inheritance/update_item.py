@@ -6,6 +6,10 @@ def update(item):
     strategy().update(item)
 
 
+def get_updater_for(item):
+    return UPDATERS.get(item.name, UPDATERS[DEFAULT_KEY])().update
+
+
 DEFAULT_KEY = "----default-----"
 
 

@@ -1,26 +1,11 @@
-
-def update(item):
-    if item.name in UPDATERS.keys():
-        UPDATERS[item.name](item)
-    else:
-        UPDATERS[DEFAULT_KEY](item)
+from gilded_rose.refactored.functional.template_methods \
+    import update_factory, useless_after_sell_in
 
 
-def cap(item):
-    if item.quality < 0:
-        item.quality = 0
-    elif item.quality > 50:
-        item.quality = 50
+def get_updater_for(item):
+    return UPDATERS.get(item.name, UPDATERS[DEFAULT_KEY])
 
-
-def update_factory(quality_change):
-    def template_function(item):
-        cap(item)
-        item.sell_in = item.sell_in - 1
-        item.quality = item.quality + quality_change(item)
-        cap(item)
-
-    return template_function
+# the same as in fun_decorators, but without decorators
 
 
 def quality_change_normal(item):
@@ -43,20 +28,14 @@ def quality_change_backstage_pass(item):
     return 1
 
 
-def useless_after_sell_in(update_function):
-    def cut_past_sell_in(item):
-        update_function(item)
-        if item.sell_in < 0:
-            item.quality = 0
-    return cut_past_sell_in
-
-
 def update_sulfuras(item):
     item.quality = 80
 
 
 DEFAULT_KEY = "----default-----"
 
+# without the decorators, the quality_change methods
+# need to be explicitly wrapped
 UPDATERS = {
     DEFAULT_KEY: update_factory(quality_change_normal),
     "Conjured Item": update_factory(quality_change_conjured),
