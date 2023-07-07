@@ -25,8 +25,9 @@ while true; do
     pytest $subdir --impl original
     pytest $subdir --impl refactored
 
-    pytest $subdir --impl fun_plain
-    pytest $subdir --impl fun_decorators
+    #pytest $subdir --impl fun_plain
+    #pytest $subdir --impl fun_decorators
+    pytest $subdir --impl functional.plain
     pytest $subdir --impl inheritance
     pytest $subdir --impl registry
 

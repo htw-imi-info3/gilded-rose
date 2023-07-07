@@ -2,7 +2,7 @@ import pytest
 import importlib
 from gilded_rose.refactored.gilded_rose import GildedRose
 from gilded_rose.original.gilded_rose import GildedRose as GildedRose_Original
-
+from gilded_rose.refactored.functional.plain.update_item import get_updater_for
 
 def pytest_addoption(parser):
     parser.addoption("--impl", action="store")
