@@ -1,4 +1,4 @@
-from tests.settings import pytest, Item, xfail_bug_in_original, xfail_bug_fix
+from test_complete.settings import pytest, Item, xfail_bug_in_original, xfail_bug_fix
 
 # - "Backstage passes", like aged brie, increases in Quality as its SellIn value approaches;
 # 	Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but

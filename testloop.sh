@@ -2,16 +2,18 @@
 
 echo "-----1: ----$1"
 if [ $1 ]; then
-    subdir=$1
+    subdir="$1"
+    echo "-----subdir: ----$subdir"
 else
-    subdir=tests
+    subdir=test_complete
 fi
-# echo "-----subdir: ----$subdir"
+
 
 while true; do
     clear
-    # use this to stop at first failure:
+    # us^e this to stop at first failure:
     # pytest -x -vv $subdir
+    echo pytest -vv -rxX $subdir --impl refactored
     pytest -vv -rxX $subdir --impl refactored
     fswatch ./**/*.py  -1
 done

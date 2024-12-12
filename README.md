@@ -19,8 +19,11 @@ and then implement the new feature using
 
 ## Step by Step
 
-1. Implement Characterization Tests
+Note: the repository contains a simple test scaffold in [./test_scaffold](./test_scaffold)
+to use if you want to write the tests yourself, and a complete test 
+suite in [./test_complete](./test_complete) if you want to skip that part.
 
+1. Implement Characterization Tests
     a. Read the [Requirements](GildedRoseRequirements.txt)
     
     b. Have a look at the current source code

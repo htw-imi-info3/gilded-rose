@@ -1,4 +1,4 @@
-from tests.settings import pytest, Item, xfail_bug_in_original, xfail_bug_fix
+from test_complete.settings import pytest, Item, xfail_bug_in_original, xfail_bug_fix
 
 #  'every': "- At the end of each day our system lowers both values for every item",
 

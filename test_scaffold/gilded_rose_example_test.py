@@ -1,4 +1,4 @@
-from tests.settings import *
+from test_scaffold.settings import *
 
 def test_item_example():
     item = Item("some item text", 6, 20)
