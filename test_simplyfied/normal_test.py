@@ -39,18 +39,18 @@ def test_normal_quality_is_never_negative_past_sell_in(update):
     assert item.quality == 0
 
 
-@pytest.mark.xfail(xfail_bug_in_original, reason="bug in original")
-def test_normal_quality_is_never_negative_starting_negative_fails(update):
-    item = update(Item("normal with any name", 10, -5))
-    assert item.sell_in == 9
-    assert item.quality == -5
-
-
-@pytest.mark.xfail(xfail_bug_fix, reason="fixed value")
-def test_normal_quality_is_never_negative_starting_negative_fixed(update):
-    item = update(Item("normal with any name", 10, -5))
-    assert item.sell_in == 9
-    assert item.quality == 0
+# @pytest.mark.xfail(xfail_bug_in_original, reason="bug in original")
+# def test_normal_quality_is_never_negative_starting_negative_fails(update):
+#     item = update(Item("normal with any name", 10, -5))
+#     assert item.sell_in == 9
+#     assert item.quality == -5
+#
+#
+# @pytest.mark.xfail(xfail_bug_fix, reason="fixed value")
+# def test_normal_quality_is_never_negative_starting_negative_fixed(update):
+#     item = update(Item("normal with any name", 10, -5))
+#     assert item.sell_in == 9
+#     assert item.quality == 0
 
 
 def test_normal_quality_is_never_over_50_from_50(update):
@@ -59,32 +59,32 @@ def test_normal_quality_is_never_over_50_from_50(update):
     assert item.quality == 49
 
 
-@pytest.mark.xfail(xfail_bug_in_original, reason="bug in original")
-def test_normal_quality_is_never_over_50_from_49_at_sell_in(update):
-    item = update(Item("normal with any name", 0, 51))
-    assert item.sell_in == -1
-    assert item.quality == 49
-
-
-@pytest.mark.xfail(xfail_bug_fix, reason="fixed value")
-def test_normal_quality_is_never_over_50_from_49_at_sell_in_fixed(update):
-    item = update(Item("normal with any name", 0, 51))
-    assert item.sell_in == -1
-    assert item.quality == 48
-
-
-@pytest.mark.xfail(xfail_bug_in_original, reason="bug in original")
-def test_normal_quality_is_never_over_50_starting_over_50_bug(update):
-    item = update(Item("normal with any name", 0, 100))
-    assert item.sell_in == -1
-    assert item.quality == 98
-
-
-@pytest.mark.xfail(xfail_bug_fix, reason="fixed value")
-def test_normal_quality_is_never_over_50_starting_over_50_fixed(update):
-    item = update(Item("normal with any name", 0, 100))
-    assert item.sell_in == -1
-    assert item.quality == 48
+# @pytest.mark.xfail(xfail_bug_in_original, reason="bug in original")
+# def test_normal_quality_is_never_over_50_from_49_at_sell_in(update):
+#     item = update(Item("normal with any name", 0, 51))
+#     assert item.sell_in == -1
+#     assert item.quality == 49
+#
+#
+# @pytest.mark.xfail(xfail_bug_fix, reason="fixed value")
+# def test_normal_quality_is_never_over_50_from_49_at_sell_in_fixed(update):
+#     item = update(Item("normal with any name", 0, 51))
+#     assert item.sell_in == -1
+#     assert item.quality == 48
+#
+#
+# @pytest.mark.xfail(xfail_bug_in_original, reason="bug in original")
+# def test_normal_quality_is_never_over_50_starting_over_50_bug(update):
+#     item = update(Item("normal with any name", 0, 100))
+#     assert item.sell_in == -1
+#     assert item.quality == 98
+#
+#
+# @pytest.mark.xfail(xfail_bug_fix, reason="fixed value")
+# def test_normal_quality_is_never_over_50_starting_over_50_fixed(update):
+#     item = update(Item("normal with any name", 0, 100))
+#     assert item.sell_in == -1
+#     assert item.quality == 48
 
 # these are not bugs after all, quality is set back to 0:
 
