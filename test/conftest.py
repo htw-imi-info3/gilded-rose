@@ -14,7 +14,9 @@ def update_item():
     def _update_item(name, sell_in, quality):
         item = Item(name, sell_in, quality)
         #GildedRose([item]).update_quality()
-        update_one_item(item)
+        new_item = update_one_item(item)
+        item.sell_in = new_item.sell_in
+        item.quality = new_item.quality
         return item
     return _update_item
 

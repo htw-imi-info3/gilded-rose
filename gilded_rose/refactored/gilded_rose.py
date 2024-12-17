@@ -27,6 +27,7 @@ def update_one_item(item):
         else:
             if item.quality < 50:
                 item.quality = item.quality + 1
+    return item
 
 
 class GildedRose(object):
