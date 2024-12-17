@@ -6,6 +6,12 @@ def update_one_item(item):
     if item.name.startswith("Sulfuras"):
         item2 = Sulfuras(item.name, item.sell_in, item.quality)
         item2.update()
+        return item2
+
+    if item.name.startswith("Aged Brie"):
+        item2 = AgedBrie(item.name, item.sell_in, item.quality)
+        item2.update()
+        return item2
 
     if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
         if item.quality > 0:
