@@ -13,6 +13,11 @@ def update_one_item(item):
         item2.update()
         return item2
 
+    if item.name.startswith("Backstage"):
+        item2 = Backstage(item.name, item.sell_in, item.quality)
+        item2.update()
+        return item2
+
     if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
         if item.quality > 0:
             if item.name != "Sulfuras, Hand of Ragnaros":
