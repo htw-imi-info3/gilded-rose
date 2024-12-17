@@ -4,5 +4,5 @@
     -v $(pwd):/cwd \
     -w /cwd \
     -t bkleinen/pytest \
-   pwd ; pytest -vv -rxX tests
+   pwd ; pytest -vv -rxX test/happy
 
