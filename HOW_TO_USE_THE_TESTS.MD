@@ -18,15 +18,20 @@ or simply:
 
 to run all tests
 
-## Test configuration
+## How to use the tests during the refactoring
 
-use ORIGINAL_IMPLEMENTATION and FIXED in test/conftest.py to configure the tests:
+- do the refactoring in gilded_rose/refactored
+- to enable the expectations for the bug fixes, add fixed items one by one to 
+  the constant FIXED in gilded_rose/__init__.py
 
-    ORIGINAL_IMPLEMENTATION = True: use implementation in gilded_rose/original
-                              False: use implementation in gilded_rose/refactored
+- to develop conjured item (the item to be added after the refactoring) test driven, 
+  add 'conjured' to the FIXED list in gilded_rose/__init__.py
 
-FIXED = [...] contains a list of item types for which the fixed implementations are used.
-Add conjured to this list to not skip its tests.
+
+(Note: in most cases, you would just refactor the one implementation. In order to 
+- compare implementations
+- ensure that the tests run equally well on the original and the refactored & fixed version
+I've added the implementation toggle in gilded_rose/__init__.py)
 
 ## Test Coverage
 

@@ -1,5 +1,5 @@
-from gilded_rose.refactored.update_strategies import NormalItem
-from gilded_rose.refactored.update_item import UPDATERS
+from gilded_rose.refactoring_example.update_strategies import NormalItem
+from gilded_rose.refactoring_example.update_item import UPDATERS
 
 
 class ConjuredItem(NormalItem):

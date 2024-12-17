@@ -1,4 +1,4 @@
-from gilded_rose.refactored.update_strategies import NormalItem, AgedBrie, BackstagePass, Sulfuras
+from gilded_rose.refactoring_example.update_strategies import NormalItem, AgedBrie, BackstagePass, Sulfuras
 
 
 def get_updater_for(item):

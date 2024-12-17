@@ -1,20 +1,7 @@
 import pytest
 
-from gilded_rose.original.gilded_rose import Item
-
-
-## -- switch implementation here--
-
-ORIGINAL_IMPLEMENTATION = False
-
-if ORIGINAL_IMPLEMENTATION:
-    from gilded_rose.original.gilded_rose import GildedRose
-    FIXED = [ ]
-else:
-    from gilded_rose.refactored.gilded_rose import GildedRose
-    FIXED = ['sulfuras', 'aged_brie', 'normal', 'backstage', 'conjured']
-
-
+from gilded_rose import Item, GildedRose
+from gilded_rose import FIXED
 
 # this fixture creates a **a method** that
 # creates a single item with the given parameters
