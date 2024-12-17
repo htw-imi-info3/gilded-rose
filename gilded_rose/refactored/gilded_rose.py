@@ -1,5 +1,12 @@
 # -*- coding: utf-8 -*-
+from gilded_rose.refactored.item import *
+
+
 def update_one_item(item):
+    if item.name.startswith("Sulfuras"):
+        item2 = Sulfuras(item.name, item.sell_in, item.quality)
+        item2.update()
+
     if item.name != "Aged Brie" and item.name != "Backstage passes to a TAFKAL80ETC concert":
         if item.quality > 0:
             if item.name != "Sulfuras, Hand of Ragnaros":
@@ -39,12 +46,3 @@ class GildedRose(object):
         for item in self.items:
             update_one_item(item)
 
-
-class Item:
-    def __init__(self, name, sell_in, quality):
-        self.name = name
-        self.sell_in = sell_in
-        self.quality = quality
-
-    def __repr__(self):
-        return "%s, %s, %s" % (self.name, self.sell_in, self.quality)
