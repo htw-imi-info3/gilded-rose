@@ -2,7 +2,7 @@ import pytest
 
 from gilded_rose import Item, GildedRose
 from gilded_rose import FIXED
-
+from gilded_rose.refactored.gilded_rose import update_one_item
 # this fixture creates a **a method** that
 # creates a single item with the given parameters
 # (name, sell_in, quality)
@@ -13,7 +13,8 @@ from gilded_rose import FIXED
 def update_item():
     def _update_item(name, sell_in, quality):
         item = Item(name, sell_in, quality)
-        GildedRose([item]).update_quality()
+        #GildedRose([item]).update_quality()
+        update_one_item(item)
         return item
     return _update_item
 
