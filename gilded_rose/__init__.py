@@ -6,7 +6,7 @@ if DO_REFACTORING:
     # add the refactored types here one by one to use the fixed expectations in test/bug and test/new
     # example:
     # FIXED = ['sulfuras', 'aged_brie', 'normal', 'backstage', 'conjured']
-    FIXED = [ ]
+    FIXED = [ 'sulfuras', 'aged_brie', 'normal', 'backstage']
 
 
 
