@@ -1,3 +1,24 @@
+
+def all_subclasses(cls):
+    return set(cls.__subclasses__()).union(
+        [s for c in cls.__subclasses__() for s in all_subclasses(c)])
+
+def item_clazzes():
+    clazzes = list(all_subclasses(Item))
+    clazzes.append(Item) # Item class has to be last!!
+    return clazzes
+
+def item_factory(name, sell_in, quality):
+    item_classes = item_clazzes()
+
+    implementation = [c for c in item_classes if c.is_for(name)]
+    if len(implementation) > 0:
+        item = implementation[0](name, sell_in, quality)
+    else:
+        raise NotImplementedError(f"no implementation for '{name}'")
+
+    return item
+
 class Item:
     @staticmethod
     def is_for(name):
